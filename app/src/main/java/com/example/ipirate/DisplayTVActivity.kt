@@ -17,7 +17,6 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import java.io.FileNotFoundException
 import java.io.OutputStreamWriter
-import kotlin.system.exitProcess
 
 data class TVTMDBData(val name: String, val id: Int, val first_air_date: String,
                     val vote_average: Float,val overview: String, val poster_path: String)
