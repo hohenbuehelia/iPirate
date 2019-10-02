@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="732dp"
+                android:layout_marginEnd="411dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_begin="732dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/settings_title"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:fontFamily="@font/architects_daughter"
+                android:includeFontPadding="false"
+                android:text="@string/settings_title"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorText"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/colorAccent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+            <TextView
+                android:id="@+id/settingsInstruction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:elegantTextHeight="false"
+                android:fontFamily="monospace"
+                android:text="@string/settings_instructions"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                tools:layout_editor_absoluteY="74dp" />
+
+            <TextView
+                android:id="@+id/tmdbTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/tmdb"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/tmdbAPIText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settingsInstruction" />
+
+            <EditText
+                android:id="@+id/tmdbAPIText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/tmdb_api_key"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tmdbTitle"
+                app:layout_constraintTop_toBottomOf="@+id/settingsInstruction"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/radarrTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="37dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/radarr"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/radarrAPIText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tmdbTitle" />
+
+            <EditText
+                android:id="@+id/radarrAPIText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/radarr_api_key"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radarrTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tmdbAPIText"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/sonarrTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/sonarr"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/sonarrAPIText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radarrTitle" />
+
+            <EditText
+                android:id="@+id/sonarrAPIText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/sonarr_api_key"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sonarrTitle"
+                app:layout_constraintTop_toBottomOf="@+id/radarrAPIText"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/homeIPTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/home_ip_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/homeIPText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sonarrTitle" />
+
+            <EditText
+                android:id="@+id/homeIPText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/home_ip"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/homeIPTitle"
+                app:layout_constraintTop_toBottomOf="@+id/sonarrAPIText"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/radarrPortTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/radarr_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/radarrPort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeIPTitle" />
+
+            <EditText
+                android:id="@+id/radarrPort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/radarr_port"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radarrPortTitle"
+                app:layout_constraintTop_toBottomOf="@+id/homeIPText"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/sonarrPortTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/sonarr_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/sonarrPort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radarrPortTitle" />
+
+            <EditText
+                android:id="@+id/sonarrPort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/sonarr_port"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sonarrPortTitle"
+                app:layout_constraintTop_toBottomOf="@+id/radarrPort"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/settingsSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorButton"
+                android:fontFamily="@font/architects_daughter"
+                android:onClick="saveSettings"
+                android:text="@string/settings_update_button"
+                android:textColor="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sonarrPort" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
