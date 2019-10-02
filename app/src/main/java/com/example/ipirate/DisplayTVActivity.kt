@@ -3,6 +3,7 @@ package com.example.ipirate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.google.gson.Gson
@@ -16,6 +17,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import java.io.FileNotFoundException
 import java.io.OutputStreamWriter
+import kotlin.system.exitProcess
 
 data class TVTMDBData(val name: String, val id: Int, val first_air_date: String,
                     val vote_average: Float,val overview: String, val poster_path: String)
@@ -209,6 +211,12 @@ class DisplayTVActivity : AppCompatActivity() {
                 requestMethod = "GET"
                 val dirtyJson = inputStream.bufferedReader().use {
                     it.readText()
+                }
+                Log.d("FUUUUCK", "dirtyJsonType: ${dirtyJson.javaClass.name}")
+                if (dirtyJson == "[]") {
+                    Log.d("FUUUUCK", "dirtyJson: is blank")
+                    // when you make notifications make some kind of notification here that says shit failed
+                    return@withContext
                 }
                 val fixJson: JsonArray = gson.fromJson(dirtyJson, JsonArray::class.java)
                 val cleanJson: SonarrData = gson.fromJson(fixJson[0], SonarrData::class.java)
