@@ -29,8 +29,6 @@ class RecyclerAdapterTV : RecyclerView.Adapter<PhotoHolderTV>() {
         val title = titles[position]
         val date = dates[position]
         val tvdbId = tvdbIds[position]
-        // Log.d("FUUUUUUCK", "2 title should have posted: $title")
-        // Log.d("FUUUUUUCK", "2 date should have posted: $date")
         holder.updateWithUrl("https://image.tmdb.org/t/p/w500/$posterUrl", title, date, tvdbId)
     }
 }
@@ -46,8 +44,6 @@ class PhotoHolderTV(v: View) : RecyclerView.ViewHolder(v) {
 
     fun updateWithUrl(url: String, title: String, date: String, tvdbId: String) {
         Picasso.get().load(url).error(R.drawable.no_poster).placeholder(R.drawable.tpb_logo).into(tvImage)
-        // Log.d("FUUUUUUCK", "3 titles should have posted: $title")
-        // Log.d("FUUUUUUCK", "3 dates should have posted: $date")
         tvTitle.text = title
         tvDate.text = date
         tvTvdbID.text = tvdbId

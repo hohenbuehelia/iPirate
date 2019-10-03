@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.provider.AlarmClock
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_display_movies.*
@@ -83,7 +84,7 @@ class DisplayMoviesActivity : AppCompatActivity() {
                 if (pages >= 4) {
                     var pagecount = 1
                     while (pages > 3) {
-                        if (pagecount == 3) {
+                        if (pagecount == 2) {
                             break
                         }
                         val url2 = URL("https://api.themoviedb.org/3/search/movie?api_key=${Globals.tmdbAPI}&page=$pagecount&query=$input")
@@ -166,7 +167,7 @@ class DisplayMoviesActivity : AppCompatActivity() {
             }
         }
     }
-    fun test(view: View) = runBlocking {
+    fun postMovie(view: View) = runBlocking {
         withContext(Dispatchers.IO) {
             val textView = findViewById<TextView>(R.id.movieTmdbId)
             val searchNum = textView.text
@@ -191,7 +192,25 @@ class DisplayMoviesActivity : AppCompatActivity() {
                     val outputWriter = OutputStreamWriter(outputStream)
                     outputWriter.write(data)
                     outputWriter.flush()
-                    print(responseCode)
+                    val response = responseCode
+                    if (response == 201) {
+                        val tval = "Success!"
+                        val tdur = Toast.LENGTH_SHORT
+                        runOnUiThread {
+                            run {
+                                Toast.makeText(this@DisplayMoviesActivity, tval, tdur).show()
+                            }
+                        }
+                    }
+                    else {
+                        val tval = "Failed - $response"
+                        val tdur = Toast.LENGTH_SHORT
+                        runOnUiThread {
+                            run {
+                                Toast.makeText(this@DisplayMoviesActivity, tval, tdur).show()
+                            }
+                        }
+                    }
                 }
             }
         }

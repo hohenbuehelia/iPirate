@@ -1,11 +1,12 @@
 package com.example.ipirate
 
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.provider.AlarmClock
-import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_display_movies.*
 import java.net.HttpURLConnection
@@ -92,7 +93,7 @@ class DisplayTVActivity : AppCompatActivity() {
                 if (pages >= 4) {
                     var pagecount = 1
                     while (pages > 3) {
-                        if (pagecount == 3) {
+                        if (pagecount == 2) {
                             break
                         }
                         val url2 =
@@ -199,6 +200,7 @@ class DisplayTVActivity : AppCompatActivity() {
             }
         }
     }
+    @RequiresApi(Build.VERSION_CODES.P)
     fun postShow(view: View) = runBlocking {
         withContext(Dispatchers.IO) {
             val textView = findViewById<TextView>(R.id.tvTvdbId)
@@ -211,10 +213,14 @@ class DisplayTVActivity : AppCompatActivity() {
                 val dirtyJson = inputStream.bufferedReader().use {
                     it.readText()
                 }
-                Log.d("FUUUUCK", "dirtyJsonType: ${dirtyJson.javaClass.name}")
                 if (dirtyJson == "[]") {
-                    Log.d("FUUUUCK", "dirtyJson: is blank")
-                    // when you make notifications make some kind of notification here that says shit failed
+                    val tval = "Failed - TVDB ID Error"
+                    val tdur = Toast.LENGTH_SHORT
+                    runOnUiThread {
+                        run {
+                            Toast.makeText(this@DisplayTVActivity, tval, tdur).show()
+                        }
+                    }
                     return@withContext
                 }
                 val fixJson: JsonArray = gson.fromJson(dirtyJson, JsonArray::class.java)
@@ -232,8 +238,25 @@ class DisplayTVActivity : AppCompatActivity() {
                     val outputWriter = OutputStreamWriter(outputStream)
                     outputWriter.write(data)
                     outputWriter.flush()
-                    print(responseMessage)
-                    print(responseCode)
+                    val response = responseCode
+                    if (response == 201) {
+                        val tval = "Success!"
+                        val tdur = Toast.LENGTH_SHORT
+                        runOnUiThread {
+                            run {
+                                Toast.makeText(this@DisplayTVActivity, tval, tdur).show()
+                            }
+                        }
+                    }
+                    else {
+                        val tval = "Failed - $response"
+                        val tdur = Toast.LENGTH_SHORT
+                        runOnUiThread {
+                            run {
+                                Toast.makeText(this@DisplayTVActivity, tval, tdur).show()
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.example.ipirate
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.settings.*
 
@@ -123,6 +124,10 @@ class SettingsActivity : AppCompatActivity() {
             Globals.sonarrPort = message
             SharedPreferences(this).save("sonarrPort", message)
         }
-        finish()
+        runOnUiThread {
+            run {
+                Toast.makeText(this@SettingsActivity, "Saved!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
