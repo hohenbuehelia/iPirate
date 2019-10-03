@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorBackground"
-    android:id="@+id/parent_layout"
+    android:background="@android:color/background_light"
     tools:context=".DisplayMoviesActivity">
 
 
@@ -21,6 +21,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.53" />
 
+    <LinearLayout
+        android:id="@+id/topline"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@android:color/black"
+        android:visibility="invisible"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/movieImage" />
+
     <ImageView
         android:id="@+id/movieImage"
         android:layout_width="match_parent"
@@ -32,16 +43,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/botline"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:background="@android:color/black"
+        android:visibility="invisible"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieImage" />
+
     <TextView
         android:id="@+id/movieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/architects_daughter"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/alice"
         android:text=""
         android:textAlignment="viewStart"
-        android:textColor="@color/colorText"
-        android:textSize="25sp"
+        android:textColor="@color/design_default_color_on_secondary"
         android:textIsSelectable="true"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/movieDate"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,12 +72,13 @@
         android:id="@+id/movieDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/architects_daughter"
+        android:layout_marginBottom="30dp"
         android:text=""
         android:textAlignment="viewStart"
-        android:textColor="@color/colorText"
-        android:textSize="25sp"
+        android:fontFamily="@font/alice"
+        android:textColor="@color/design_default_color_on_secondary"
         android:textIsSelectable="true"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

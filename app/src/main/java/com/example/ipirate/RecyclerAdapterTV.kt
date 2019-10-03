@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -40,6 +41,8 @@ class PhotoHolderTV(v: View) : RecyclerView.ViewHolder(v) {
     private val tvDate: TextView = v.findViewById(R.id.tvDate)
     private val tvTvdbID: TextView = v.findViewById(R.id.tvTvdbId)
     private val downloadShow: ImageButton = v.findViewById(R.id.downloadShow)
+    private val topLine: LinearLayout = v.findViewById(R.id.tvtopline)
+    private val botLine: LinearLayout = v.findViewById(R.id.tvbotline)
     // private var posterUrlString = String()
 
     fun updateWithUrl(url: String, title: String, date: String, tvdbId: String) {
@@ -48,6 +51,8 @@ class PhotoHolderTV(v: View) : RecyclerView.ViewHolder(v) {
         tvDate.text = date
         tvTvdbID.text = tvdbId
         downloadShow.visibility = View.VISIBLE
+        topLine.visibility = View.VISIBLE
+        botLine.visibility = View.VISIBLE
         // posterUrlString = urlstring
     }
 }

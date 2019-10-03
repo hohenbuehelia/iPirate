@@ -1,10 +1,12 @@
 package com.example.ipirate
 
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -41,6 +43,8 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val movieDate: TextView = v.findViewById(R.id.movieDate)
     private val movieTmdbID: TextView = v.findViewById(R.id.movieTmdbId)
     private val downloadMovie: ImageButton = v.findViewById(R.id.downloadMovie)
+    private val topLine: LinearLayout = v.findViewById(R.id.topline)
+    private val botLine: LinearLayout = v.findViewById(R.id.botline)
     // val parentLayout: ConstraintLayout = v.findViewById(R.id.parent_layout)
     // private var posterUrlString = String()
 
@@ -51,6 +55,8 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
         movieDate.text = date
         movieTmdbID.text = tmdbId
         downloadMovie.visibility = View.VISIBLE
+        topLine.visibility = View.VISIBLE
+        botLine.visibility = View.VISIBLE
         // posterUrlString = urlstring
     }
 }
