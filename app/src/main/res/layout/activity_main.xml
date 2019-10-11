@@ -126,23 +126,6 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--
-    <TextView
-        android:id="@+id/line_splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
-        android:elegantTextHeight="false"
-        android:fontFamily="monospace"
-        android:text="@string/line_splash"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/movie_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_title" />
-!-->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -156,6 +139,60 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/radarrbutton"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorButton"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/button_radarr"
+        android:textColor="@color/colorText"
+        android:textSize="14sp"
+        android:onClick="browseRadarr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/sonarrbutton"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorButton"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/button_sonarr"
+        android:textColor="@color/colorText"
+        android:textSize="14sp"
+        android:onClick="browseSonarr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/radarrbutton" />
+
+    <ImageButton
+        android:id="@+id/updateRadarrSQL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorButton"
+        android:onClick="updateRadarr"
+        app:layout_constraintBottom_toTopOf="@id/radarrbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/stat_notify_sync_noanim" />
+
+    <ImageButton
+        android:id="@+id/updateSonarrSQL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="255dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorButton"
+        android:onClick="updateSonarr"
+        app:layout_constraintBottom_toTopOf="@id/sonarrbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/stat_notify_sync_noanim" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

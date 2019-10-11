@@ -45,7 +45,6 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val downloadMovie: ImageButton = v.findViewById(R.id.downloadMovie)
     private val topLine: LinearLayout = v.findViewById(R.id.topline)
     private val botLine: LinearLayout = v.findViewById(R.id.botline)
-    // val parentLayout: ConstraintLayout = v.findViewById(R.id.parent_layout)
     // private var posterUrlString = String()
 
     fun updateWithUrl(url: String, title: String, date: String, tmdbId: String) {

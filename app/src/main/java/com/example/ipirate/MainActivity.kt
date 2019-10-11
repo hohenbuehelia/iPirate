@@ -1,5 +1,6 @@
 package com.example.ipirate
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -78,5 +79,32 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
+
+    fun browseRadarr(view: View) {
+        val request = "1"
+        val intent = Intent(this, DisplaySQLActivityRadarr()::class.java).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, request)
+        }
+        startActivity(intent)
+    }
+
+    fun updateRadarr(view: View) {
+        val intent = Intent(this, DisplaySQLActivityRadarr()::class.java)
+        startActivity(intent)
+    }
+
+    fun browseSonarr(view: View) {
+        val request = "1"
+        val intent = Intent(this, DisplaySQLActivitySonarr()::class.java).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, request)
+        }
+        startActivity(intent)
+    }
+
+    fun updateSonarr(view: View) {
+        val intent = Intent(this, DisplaySQLActivitySonarr()::class.java)
+        startActivity(intent)
+    }
+
 }
 

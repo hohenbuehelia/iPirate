@@ -4,14 +4,15 @@
     <string name="app_name">iPirate</string>
     <string name="top_label">iPirate</string>
     <string name="main_menu">Settings</string>
-    <string name="edit_message">Enter a Movie to Search</string>
-    <string name="button_send">Search</string>
     <string name="movie_title">Movie poster</string>
     <string name="splash_title">i•Pirate</string>
     <string name="splash_movie">Searching for a Movie?</string>
-    <string name="line_splash">________________</string>
-    <string name="edit_tv_message">Enter a TV Show to Search</string>
+    <string name="edit_message">Enter a Movie to Search</string>
     <string name="splash_tv">or a Show?</string>
+    <string name="edit_tv_message">Enter a TV Show to Search</string>
+    <string name="button_send">Search</string>
+    <string name="button_radarr">Owned Movies</string>
+    <string name="button_sonarr">Owned Shows</string>
 
     <!-- settings strings !-->
     <string name="settings_title">SETTINGS</string>

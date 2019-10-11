@@ -33,8 +33,9 @@ class DisplayMoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_movies)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        // do if statement here if not using drop down
         input = intent.getStringExtra(AlarmClock.EXTRA_MESSAGE)!!
-        // do multi / single if statement here and just add backup - getMovie() / getMovieMultiPage()
+        // do if statement here if you can figure it out :-)
         getMovie()
         val descriptions = mutableListOf<String>()
         val titles = mutableListOf<String>()
