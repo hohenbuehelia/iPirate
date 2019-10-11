@@ -29,6 +29,12 @@
     <string name="radarr_port">%1$s</string>
     <string name="sonarr_text">Sonarr Port: </string>
     <string name="sonarr_port">%1$s</string>
+    <string name="sql_text">SQL Port: </string>
+    <string name="sql_port">%1$s</string>
+    <string name="sql_user_text">SQL User: </string>
+    <string name="sql_user">%1$s</string>
+    <string name="sql_pass_text">SQL Pass: </string>
+    <string name="sql_pass">%1$s</string>
     <string name="settings_update_button">Save</string>
 
     <!-- other settings !-->

@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_display_radarr.*
@@ -109,6 +110,7 @@ class DisplaySQLActivitySonarr : AppCompatActivity() {
             readSonarr()
         } else {
             sonarrFullSQLUpdate()
+            finish()
         }
         val titles = mutableListOf<String>()
         val dates = mutableListOf<String>()
@@ -135,7 +137,7 @@ class DisplaySQLActivitySonarr : AppCompatActivity() {
 
     fun sonarrDailySQLUpdate() {
         val connectionUrl =
-            "jdbc:sqlserver://73.14.117.191\\SQLEXPRESS:25022;databaseName=Owned;user=hohen;password=B619a84!"
+            "jdbc:sqlserver://${Globals.homeIP.replace("http://", "")}\\SQLEXPRESS${Globals.sqlPort};databaseName=Owned;user=${Globals.sqlUser};password=${Globals.sqlPass}"
         try {
             DriverManager.getConnection(connectionUrl).use { con ->
                 con.createStatement().use { stmt ->
@@ -177,10 +179,10 @@ class DisplaySQLActivitySonarr : AppCompatActivity() {
         }
     }
 
-    fun sonarrFullSQLUpdate() = runBlocking {
+    private fun sonarrFullSQLUpdate() = runBlocking {
         withContext(Dispatchers.IO) {
             val connectionUrl =
-                "jdbc:jtds:sqlserver://73.14.117.191:25022/Owned;instance=SQLEXPRESS;user=hohen;password=B619a84!"
+                "jdbc:jtds:sqlserver://${Globals.homeIP.replace("http://", "")}${Globals.sqlPort}/Owned;instance=SQLEXPRESS;user=${Globals.sqlUser};password=${Globals.sqlPass}"
             try {
                 DriverManager.getConnection(connectionUrl).use { con ->
                     con.createStatement().use { stmt ->
@@ -219,6 +221,7 @@ class DisplaySQLActivitySonarr : AppCompatActivity() {
                 }
             } 
             catch (e: SQLException) {
+                Log.d("FUUUUU", e.message.toString())
             }
         }
     }
@@ -292,6 +295,7 @@ class DisplaySQLActivityRadarr : AppCompatActivity() {
         }
         else {
             radarrFullSQLUpdate()
+            finish()
         }
         val titles = mutableListOf<String>()
         val releases = mutableListOf<String>()
@@ -318,7 +322,7 @@ class DisplaySQLActivityRadarr : AppCompatActivity() {
 
     fun radarrDailySQLUpdate() {
         val connectionUrl =
-            "jdbc:sqlserver://73.14.117.191\\SQLEXPRESS:25022;databaseName=Owned;user=hohen;password=B619a84!"
+            "jdbc:sqlserver://${Globals.homeIP.replace("http://", "")}\\SQLEXPRESS${Globals.sqlPort};databaseName=Owned;user=${Globals.sqlUser};password=${Globals.sqlPass}"
         try {
             DriverManager.getConnection(connectionUrl).use { con ->
                 con.createStatement().use { stmt ->
@@ -348,10 +352,10 @@ class DisplaySQLActivityRadarr : AppCompatActivity() {
         }
     }
 
-    fun radarrFullSQLUpdate() = runBlocking {
+    private fun radarrFullSQLUpdate() = runBlocking {
         withContext(Dispatchers.IO) {
             val connectionUrl =
-                "jdbc:jtds:sqlserver://73.14.117.191:25022/Owned;instance=SQLEXPRESS;user=hohen;password=B619a84!"
+                "jdbc:jtds:sqlserver://${Globals.homeIP.replace("http://", "")}${Globals.sqlPort}/Owned;instance=SQLEXPRESS;user=${Globals.sqlUser};password=${Globals.sqlPass}"
             try {
                 DriverManager.getConnection(connectionUrl).use { con ->
                     con.createStatement().use { stmt ->
@@ -389,6 +393,7 @@ class DisplaySQLActivityRadarr : AppCompatActivity() {
                 }
             }
             catch (e: SQLException) {
+                Log.d("FUUUUU", e.message.toString())
             }
         }
     }

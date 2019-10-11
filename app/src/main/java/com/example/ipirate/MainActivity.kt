@@ -1,6 +1,5 @@
 package com.example.ipirate
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +16,9 @@ object Globals {
     var homeIP = ""
     var radarrPort = ""
     var sonarrPort = ""
+    var sqlPort = ""
+    var sqlUser = ""
+    var sqlPass = ""
 }
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         }
         if (SharedPreferences(this).getValueString("sonarrPort") != null) {
             Globals.sonarrPort = SharedPreferences(this).getValueString("sonarrPort")!!
+        }
+        if (SharedPreferences(this).getValueString("sqlPort") != null) {
+            Globals.sqlPort = SharedPreferences(this).getValueString("sqlPort")!!
+        }
+        if (SharedPreferences(this).getValueString("sqlUser") != null) {
+            Globals.sqlUser = SharedPreferences(this).getValueString("sqlUser")!!
+        }
+        if (SharedPreferences(this).getValueString("sqlPass") != null) {
+            Globals.sqlPass = SharedPreferences(this).getValueString("sqlPass")!!
         }
     }
 

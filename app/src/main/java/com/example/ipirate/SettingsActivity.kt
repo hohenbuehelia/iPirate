@@ -60,6 +60,30 @@ class SettingsActivity : AppCompatActivity() {
             val sonarrport = getString(R.string.sonarr_port, Globals.sonarrPort)
             sonarrPort.hint = sonarrport
         }
+        if (isNullorEmpty(Globals.sqlPort)) {
+            val sqlport = "Enter SQL Port"
+            sqlPort.hint = sqlport
+        }
+        else {
+            val sqlport = getString(R.string.sql_port, Globals.sqlPort)
+            sqlPort.hint = sqlport
+        }
+        if (isNullorEmpty(Globals.sqlUser)) {
+            val sqluser = "Enter SQL User"
+            sqlUser.hint = sqluser
+        }
+        else {
+            val sqluser = getString(R.string.sql_user, Globals.sqlUser)
+            sqlUser.hint = sqluser
+        }
+        if (isNullorEmpty(Globals.sqlPass)) {
+            val sqlpass = "Enter SQL Pass"
+            sqlPass.hint = sqlpass
+        }
+        else {
+            val sqlpass = getString(R.string.sql_pass, Globals.sqlPass)
+            sqlPass.hint = sqlpass
+        }
     }
 
     private fun isNullorEmpty(str: String?): Boolean {
@@ -123,6 +147,33 @@ class SettingsActivity : AppCompatActivity() {
             val message = editText.text.toString()
             Globals.sonarrPort = message
             SharedPreferences(this).save("sonarrPort", message)
+        }
+        if (isNullorEmpty(sqlPort.text.toString())) {
+            Globals.sqlPort
+        }
+        else {
+            val editText = findViewById<EditText>(R.id.sqlPort)
+            val message = editText.text.toString()
+            Globals.sqlPort = message
+            SharedPreferences(this).save("sqlPort", message)
+        }
+        if (isNullorEmpty(sqlUser.text.toString())) {
+            Globals.sqlUser
+        }
+        else {
+            val editText = findViewById<EditText>(R.id.sqlUser)
+            val message = editText.text.toString()
+            Globals.sqlUser = message
+            SharedPreferences(this).save("sqlUser", message)
+        }
+        if (isNullorEmpty(sqlPass.text.toString())) {
+            Globals.sqlPass
+        }
+        else {
+            val editText = findViewById<EditText>(R.id.sqlPass)
+            val message = editText.text.toString()
+            Globals.sqlPass = message
+            SharedPreferences(this).save("sqlPass", message)
         }
         runOnUiThread {
             run {

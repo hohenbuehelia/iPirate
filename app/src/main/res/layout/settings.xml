@@ -266,6 +266,99 @@
                 app:layout_constraintTop_toBottomOf="@+id/radarrPort"
                 tools:ignore="Autofill" />
 
+            <TextView
+                android:id="@+id/sqlPortTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/sql_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/sqlPort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sonarrPortTitle" />
+
+            <EditText
+                android:id="@+id/sqlPort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/sql_port"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sqlPortTitle"
+                app:layout_constraintTop_toBottomOf="@+id/sonarrPort"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/sqlUserTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/sql_user_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/sqlUser"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sqlPortTitle" />
+
+            <EditText
+                android:id="@+id/sqlUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/sql_user"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sqlUserTitle"
+                app:layout_constraintTop_toBottomOf="@+id/sqlPort"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/sqlPassTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="39dp"
+                android:fontFamily="@font/architects_daughter"
+                android:text="@string/sql_pass_text"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/sqlPass"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sqlUserTitle" />
+
+            <EditText
+                android:id="@+id/sqlPass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/architects_daughter"
+                android:hint="@string/sql_pass"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sqlPassTitle"
+                app:layout_constraintTop_toBottomOf="@+id/sqlUser"
+                tools:ignore="Autofill" />
+
             <Button
                 android:id="@+id/settingsSaveButton"
                 android:layout_width="wrap_content"
@@ -278,7 +371,9 @@
                 android:textColor="@color/colorText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sonarrPort" />
+                app:layout_constraintTop_toBottomOf="@+id/sqlPass" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

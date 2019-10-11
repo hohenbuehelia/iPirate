@@ -3,7 +3,6 @@ package com.example.ipirate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -16,7 +15,6 @@ import kotlinx.coroutines.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import org.jetbrains.exposed.sql.Op
 import java.io.FileNotFoundException
 import java.io.OutputStreamWriter
 
