@@ -3,6 +3,7 @@ package com.example.ipirate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,7 @@ import kotlinx.coroutines.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import org.jetbrains.exposed.sql.Op
 import java.io.FileNotFoundException
 import java.io.OutputStreamWriter
 
@@ -37,6 +39,12 @@ class DisplayMoviesActivity : AppCompatActivity() {
         input = intent.getStringExtra(AlarmClock.EXTRA_MESSAGE)!!
         // do if statement here if you can figure it out :-)
         getMovie()
+        val dbHelper = CreateNewDatabase(this)
+        val db = dbHelper.readableDatabase
+        db.execSQL(createRadarr)
+        val projection = arrayOf(OwnedSQLiteDB.Radarr.tmdbId)
+        val selection = "${OwnedSQLiteDB.Radarr.tmdbId} = ?"
+        val listofowned = mutableListOf<String>()
         val descriptions = mutableListOf<String>()
         val titles = mutableListOf<String>()
         val releases = mutableListOf<String>()
@@ -47,6 +55,24 @@ class DisplayMoviesActivity : AppCompatActivity() {
         var count = 0
         for (i in movieOutputMap) {
             count += 1
+            var owned = false
+            val selectionArgs = arrayOf(i["tmdbId"].toString())
+            val cursor = db.query(
+                OwnedSQLiteDB.Radarr.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+            )
+            with(cursor) {
+                if (moveToNext()) {
+                    owned = true
+                }
+                cursor.close()
+            }
+            listofowned.add(owned.toString())
             descriptions.add(i["description"].toString())
             titles.add(i["title"].toString())
             releases.add(i["release"].toString())
@@ -61,6 +87,8 @@ class DisplayMoviesActivity : AppCompatActivity() {
         adapter.titles = titles.toTypedArray()
         adapter.dates = releases.toTypedArray()
         adapter.tmdbIds = tmdbIds.toTypedArray()
+        adapter.listofowned = listofowned.toTypedArray()
+        db.close()
         adapter.notifyDataSetChanged()
     }
 

@@ -1,6 +1,5 @@
 package com.example.ipirate
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ class RecyclerAdapter : RecyclerView.Adapter<PhotoHolder>() {
     var titles: Array<String> = arrayOf()
     var dates: Array<String> = arrayOf()
     var tmdbIds: Array<String> = arrayOf()
+    var listofowned: Array<String> = arrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
         val imageItem = LayoutInflater.from(parent.context)
@@ -32,7 +32,8 @@ class RecyclerAdapter : RecyclerView.Adapter<PhotoHolder>() {
         val title = titles[position]
         val date = dates[position]
         val tmdbId = tmdbIds[position]
-        holder.updateWithUrl("https://image.tmdb.org/t/p/w500/$posterUrl", title, date, tmdbId)
+        val owned = listofowned[position]
+        holder.updateWithUrl("https://image.tmdb.org/t/p/w500/$posterUrl", title, date, tmdbId, owned)
     }
 }
 
@@ -47,13 +48,15 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val botLine: LinearLayout = v.findViewById(R.id.botline)
     // private var posterUrlString = String()
 
-    fun updateWithUrl(url: String, title: String, date: String, tmdbId: String) {
+    fun updateWithUrl(url: String, title: String, date: String, tmdbId: String, owned: String) {
         Picasso.get().load(url).error(R.drawable.no_poster).placeholder(R.drawable.tpb_logo)
             .into(movieImage)
         movieTitle.text = title
         movieDate.text = date
         movieTmdbID.text = tmdbId
-        downloadMovie.visibility = View.VISIBLE
+        if (owned == "false") {
+            downloadMovie.visibility = View.VISIBLE
+        }
         topLine.visibility = View.VISIBLE
         botLine.visibility = View.VISIBLE
         // posterUrlString = urlstring

@@ -15,6 +15,7 @@ class RecyclerAdapterTV : RecyclerView.Adapter<PhotoHolderTV>() {
     var titles: Array<String> = arrayOf()
     var dates: Array<String> = arrayOf()
     var tvdbIds: Array<String> = arrayOf()
+    var listofowned: Array<String> = arrayOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolderTV {
         val imageItem = LayoutInflater.from(parent.context).inflate(R.layout.activity_display_tvshows, parent, false)
@@ -30,7 +31,8 @@ class RecyclerAdapterTV : RecyclerView.Adapter<PhotoHolderTV>() {
         val title = titles[position]
         val date = dates[position]
         val tvdbId = tvdbIds[position]
-        holder.updateWithUrl("https://image.tmdb.org/t/p/w500/$posterUrl", title, date, tvdbId)
+        val owned = listofowned[position]
+        holder.updateWithUrl("https://image.tmdb.org/t/p/w500/$posterUrl", title, date, tvdbId, owned)
     }
 }
 
@@ -45,12 +47,14 @@ class PhotoHolderTV(v: View) : RecyclerView.ViewHolder(v) {
     private val botLine: LinearLayout = v.findViewById(R.id.tvbotline)
     // private var posterUrlString = String()
 
-    fun updateWithUrl(url: String, title: String, date: String, tvdbId: String) {
+    fun updateWithUrl(url: String, title: String, date: String, tvdbId: String, owned: String) {
         Picasso.get().load(url).error(R.drawable.no_poster).placeholder(R.drawable.tpb_logo).into(tvImage)
         tvTitle.text = title
         tvDate.text = date
         tvTvdbID.text = tvdbId
-        downloadShow.visibility = View.VISIBLE
+        if (owned == "false") {
+            downloadShow.visibility = View.VISIBLE
+        }
         topLine.visibility = View.VISIBLE
         botLine.visibility = View.VISIBLE
         // posterUrlString = urlstring

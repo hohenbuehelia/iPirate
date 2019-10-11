@@ -38,6 +38,12 @@ class DisplayTVActivity : AppCompatActivity() {
         input = intent.getStringExtra(AlarmClock.EXTRA_MESSAGE)!!
         // do multi / single if statement here and just add backup - getTVShow() / getTVShowMultiPage()
         getTVShow()
+        val dbHelper = CreateNewDatabase(this)
+        val db = dbHelper.readableDatabase
+        db.execSQL(createSonarr)
+        val projection = arrayOf(OwnedSQLiteDB.Sonarr.tvdbId)
+        val selection = "${OwnedSQLiteDB.Sonarr.tvdbId} = ?"
+        val listofowned = mutableListOf<String>()
         val descriptions = mutableListOf<String>()
         val titles = mutableListOf<String>()
         val releases = mutableListOf<String>()
@@ -51,6 +57,24 @@ class DisplayTVActivity : AppCompatActivity() {
         var count = 0
         for (i in tvOutputMap) {
             count += 1
+            var owned = false
+            val selectionArgs = arrayOf(i["tvdbId"].toString())
+            val cursor = db.query(
+                OwnedSQLiteDB.Sonarr.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+            )
+            with(cursor) {
+                if (moveToNext()) {
+                    owned = true
+                }
+                cursor.close()
+            }
+            listofowned.add(owned.toString())
             descriptions.add(i["description"].toString())
             titles.add(i["name"].toString())
             releases.add(i["first_air_date"].toString())
@@ -68,6 +92,7 @@ class DisplayTVActivity : AppCompatActivity() {
         adapter.titles = titles.toTypedArray()
         adapter.dates = releases.toTypedArray()
         adapter.tvdbIds = tvdbIds.toTypedArray()
+        adapter.listofowned = listofowned.toTypedArray()
         adapter.notifyDataSetChanged()
     }
 

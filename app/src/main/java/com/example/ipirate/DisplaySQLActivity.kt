@@ -5,24 +5,15 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.provider.AlarmClock
-import android.provider.BaseColumns
-import android.util.Log
-import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_display_radarr.*
 import kotlinx.android.synthetic.main.activity_display_sonarr.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import net.sourceforge.jtds.jdbc.DefaultProperties.DATABASE_NAME
-import org.jetbrains.exposed.sql.Op
-import org.slf4j.MDC.put
 import java.sql.DriverManager
 import java.sql.SQLException
-import kotlin.coroutines.coroutineContext
 
 object OwnedSQLiteDB {
     object Radarr {
@@ -54,7 +45,7 @@ object OwnedSQLiteDB {
     }
 }
 
-private const val createSonarr =
+const val createSonarr =
     "CREATE TABLE IF NOT EXISTS ${OwnedSQLiteDB.Sonarr.TABLE_NAME} (" +
             "${OwnedSQLiteDB.Sonarr.tvdbId} INTEGER PRIMARY KEY," +
             "${OwnedSQLiteDB.Sonarr.title} VARCHAR," +
@@ -68,9 +59,9 @@ private const val createSonarr =
             "${OwnedSQLiteDB.Sonarr.rating} FLOAT," +
             "${OwnedSQLiteDB.Sonarr.status} VARCHAR)"
 
-private const val deleteSonarr = "DROP TABLE IF EXISTS ${OwnedSQLiteDB.Sonarr.TABLE_NAME}"
+const val deleteSonarr = "DROP TABLE IF EXISTS ${OwnedSQLiteDB.Sonarr.TABLE_NAME}"
 
-private const val createRadarr =
+const val createRadarr =
     "CREATE TABLE IF NOT EXISTS ${OwnedSQLiteDB.Radarr.TABLE_NAME} (" +
             "${OwnedSQLiteDB.Radarr.tmdbId} INTEGER PRIMARY KEY," +
             "${OwnedSQLiteDB.Radarr.title} VARCHAR," +
@@ -83,18 +74,16 @@ private const val createRadarr =
             "${OwnedSQLiteDB.Radarr.titleSlug} VARCHAR," +
             "${OwnedSQLiteDB.Radarr.rating} FLOAT)"
 
-private const val deleteRadarr = "DROP TABLE IF EXISTS ${OwnedSQLiteDB.Radarr.TABLE_NAME}"
+const val deleteRadarr = "DROP TABLE IF EXISTS ${OwnedSQLiteDB.Radarr.TABLE_NAME}"
 
 
 class CreateNewDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
-        Log.d("FUUUUUUUUUU", "Got to Creating new DB")
         db.execSQL(createRadarr)
         db.execSQL(createSonarr)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        Log.d("FUUUUUUUUUU", "Got to Deleting new DB")
         db.execSQL(deleteRadarr)
         db.execSQL(deleteSonarr)
     }
@@ -284,6 +273,8 @@ class DisplaySQLActivitySonarr : AppCompatActivity() {
                     )
                 )
             }
+            cursor.close()
+            db.close()
         }
     }
 }
@@ -450,6 +441,8 @@ class DisplaySQLActivityRadarr : AppCompatActivity() {
                     )
                 )
             }
+            cursor.close()
+            db.close()
         }
     }
 }
