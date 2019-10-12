@@ -46,6 +46,7 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val downloadMovie: ImageButton = v.findViewById(R.id.downloadMovie)
     private val topLine: LinearLayout = v.findViewById(R.id.topline)
     private val botLine: LinearLayout = v.findViewById(R.id.botline)
+    private val movieInfo: ImageButton = v.findViewById(R.id.movieInfo)
     // private var posterUrlString = String()
 
     fun updateWithUrl(url: String, title: String, date: String, tmdbId: String, owned: String) {
@@ -59,6 +60,7 @@ class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
         topLine.visibility = View.VISIBLE
         botLine.visibility = View.VISIBLE
+        movieInfo.visibility = View.VISIBLE
         // posterUrlString = urlstring
     }
 }

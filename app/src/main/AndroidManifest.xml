@@ -59,16 +59,21 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <!--
+
+
         <activity android:name=".IndividualMovieDisplay"
             android:parentActivityName=".DisplayMoviesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DisplayMoviesActivity" />
         </activity>
-        !-->
 
-        <activity android:name=".IndividualMovieDisplay" />
+        <activity android:name=".IndividualTVDisplay"
+            android:parentActivityName=".DisplayTVActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DisplayTVActivity" />
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

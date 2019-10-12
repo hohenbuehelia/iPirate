@@ -39,4 +39,6 @@
 
     <!-- other settings !-->
     <string name="tmdb_movies">"tmdbID: %1$s"</string>
+    <string name="released">"Released: %1$s"</string>
+    <string name="rating">"Rating: %1$s"</string>
 </resources>

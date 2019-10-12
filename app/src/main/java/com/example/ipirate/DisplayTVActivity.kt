@@ -1,5 +1,6 @@
 package com.example.ipirate
 
+import android.content.Intent
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.provider.AlarmClock
@@ -285,5 +286,24 @@ class DisplayTVActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun openIndividualTV(view: View) {
+        val textView1 = findViewById<TextView>(R.id.tvTvdbId)
+        val tvdbId = textView1.text.toString()
+        val message = mutableListOf<Map<String, String>>()
+        for (i in tvOutputMap) {
+            if (i["tvdbId"] == tvdbId) {
+                message.add(i)
+            }
+        }
+        val len = message.size
+        val messageList = arrayListOf(message[len - 1]["name"].toString(),
+            message[len - 1]["tvdbId"].toString(), message[len - 1]["first_air_date"].toString(),
+            message[len - 1]["rating"].toString(), message[len - 1]["description"].toString())
+        val intent = Intent(this, IndividualTVDisplay::class.java).apply {
+            putStringArrayListExtra(AlarmClock.EXTRA_MESSAGE, messageList)
+        }
+        startActivity(intent)
     }
 }

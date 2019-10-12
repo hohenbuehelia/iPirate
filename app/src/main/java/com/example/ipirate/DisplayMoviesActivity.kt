@@ -1,8 +1,10 @@
 package com.example.ipirate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -241,6 +243,25 @@ class DisplayMoviesActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun openIndividualMovie(view: View) {
+        val textView1 = findViewById<TextView>(R.id.movieTmdbId)
+        val tmdbId = textView1.text.toString()
+        val message = mutableListOf<Map<String, String>>()
+        for (i in movieOutputMap) {
+            if (i["tmdbId"] == tmdbId) {
+                message.add(i)
+            }
+        }
+        val len = message.size
+        val messageList = arrayListOf(message[len - 1]["title"].toString(),
+            message[len - 1]["tmdbId"].toString(), message[len - 1]["release"].toString(),
+            message[len - 1]["rating"].toString(), message[len - 1]["description"].toString())
+        val intent = Intent(this, IndividualMovieDisplay::class.java).apply {
+            putStringArrayListExtra(AlarmClock.EXTRA_MESSAGE, messageList)
+        }
+        startActivity(intent)
     }
 }
 

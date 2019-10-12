@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    tools:context=".IndividualMovieDisplay">
+    tools:context=".IndividualTVDisplay">
 
     <TextView
-        android:id="@+id/movieTitleText"
+        android:id="@+id/tvTitleText"
         android:layout_width="0dp"
         android:layout_height="39dp"
         android:layout_marginTop="24dp"
@@ -21,13 +21,13 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/toplineInd"
+        app:layout_constraintBottom_toTopOf="@+id/toplineIndTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/toplineInd"
+        android:id="@+id/toplineIndTV"
         android:layout_width="0dp"
         android:layout_height="4dp"
         android:layout_marginTop="20dp"
@@ -35,10 +35,10 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieTitleText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleText" />
 
     <TextView
-        android:id="@+id/movieDescText"
+        android:id="@+id/tvDescText"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -47,29 +47,29 @@
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toplineInd" />
+        app:layout_constraintTop_toBottomOf="@+id/toplineIndTV" />
 
     <TextView
-        android:id="@+id/movieReleaseDateText"
+        android:id="@+id/tvReleaseDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/alice"
         android:text="@string/button_radarr"
-        app:layout_constraintEnd_toStartOf="@id/movieRate"
+        app:layout_constraintEnd_toStartOf="@id/tvRate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieDescText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescText" />
 
     <TextView
-        android:id="@+id/movieRate"
+        android:id="@+id/tvRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/alice"
         android:text="@string/button_radarr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/movieReleaseDateText"
-        app:layout_constraintTop_toBottomOf="@id/movieDescText" />
+        app:layout_constraintStart_toEndOf="@id/tvReleaseDateText"
+        app:layout_constraintTop_toBottomOf="@id/tvDescText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
